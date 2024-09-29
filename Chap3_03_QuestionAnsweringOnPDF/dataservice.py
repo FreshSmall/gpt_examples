@@ -1,7 +1,13 @@
 import numpy as np
 from openai import OpenAI
 
-client = OpenAI()
+#client = OpenAI()
+
+client = OpenAI(
+  api_key="gAAAAABmFmLplODi2NxnZYnkqEG177I6cfZguGJ_kYncc6y95ViTka9uMryxXla1KJWSRtp2Lv7-p5Gk-rCxMvALTUneEykefaUIkhPeD_uDam3ENi2OMoKn3ui5FWMIeHcbUXfbQ_Yl",
+  base_url="https://aiops-api.baijia.com/openai/v1"
+)
+
 from pypdf import PdfReader
 from redis.commands.search.field import TextField, VectorField
 from redis.commands.search.indexDefinition import IndexDefinition, IndexType

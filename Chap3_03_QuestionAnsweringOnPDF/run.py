@@ -5,28 +5,31 @@ from intentservice import IntentService
 from responseservice import ResponseService
 from dataservice import DataService
 
-# Example pdf
-pdf = 'files/ExplorersGuide.pdf'
 
-data_service = DataService()
+if __name__ == '__main__':
+    # Example pdf
+    #pdf = 'files/ExplorersGuide.pdf'
+    pdf = 'file/MicroSip.pdf'
 
-# Drop all data from redis if needed
-data_service.drop_redis_data()
+    data_service = DataService()
 
-# Load data from pdf to redis
-data = data_service.pdf_to_embeddings(pdf)
+    # Drop all data from redis if needed
+    data_service.drop_redis_data()
 
-data_service.load_data_to_redis(data)
+    # Load data from pdf to redis
+    data = data_service.pdf_to_embeddings(pdf)
 
-intent_service = IntentService()
-response_service = ResponseService()
+    data_service.load_data_to_redis(data)
 
-# Question 
-question = 'Where to find treasure chests?'
-# Get the intent
-intents = intent_service.get_intent(question)
-# Get the facts
-facts = data_service.search_redis(intents)
-# Get the answer
-answer = response_service.generate_response(facts, question)
-print(answer)
+    intent_service = IntentService()
+    response_service = ResponseService()
+
+    # Question
+    question = 'Where to find treasure chests?'
+    # Get the intent
+    intents = intent_service.get_intent(question)
+    # Get the facts
+    facts = data_service.search_redis(intents)
+    # Get the answer
+    answer = response_service.generate_response(facts, question)
+    print(answer)
