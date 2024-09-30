@@ -25,11 +25,13 @@ if __name__ == '__main__':
     response_service = ResponseService()
 
     # Question
-    question = 'Where to find treasure chests?'
+    question = '祥云服务商的账号名、用户名和登良名的格式是什么？'
     # Get the intent
     intents = intent_service.get_intent(question)
+    print("intent: ", intents)
     # Get the facts
     facts = data_service.search_redis(intents)
+    print("facts: ", facts)
     # Get the answer
     answer = response_service.generate_response(facts, question)
     print(answer)
