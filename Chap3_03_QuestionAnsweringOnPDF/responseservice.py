@@ -1,9 +1,10 @@
 from openai import OpenAI
+import os
 
 #client = OpenAI()
 client = OpenAI(
-  api_key="gAAAAABmFmLplODi2NxnZYnkqEG177I6cfZguGJ_kYncc6y95ViTka9uMryxXla1KJWSRtp2Lv7-p5Gk-rCxMvALTUneEykefaUIkhPeD_uDam3ENi2OMoKn3ui5FWMIeHcbUXfbQ_Yl",
-  base_url="https://aiops-api.baijia.com/openai/v1"
+    api_key=os.environ['api_key'],
+    base_url=os.environ['base_url']
 )
 
 class ResponseService():
